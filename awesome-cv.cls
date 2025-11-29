@@ -91,6 +91,8 @@
 % Solves issues Warning: File `cv.out' has changed
 \RequirePackage{bookmark}
 
+\RequirePackage[english]{babel}
+
 %-------------------------------------------------------------------------------
 %                Configuration for directory locations
 %-------------------------------------------------------------------------------
@@ -103,17 +105,18 @@
 %-------------------------------------------------------------------------------
 %% Page Layout
 % Configure page margins with geometry
-\geometry{left=2.0cm, top=1.5cm, right=2.0cm, bottom=2.0cm, footskip=.5cm}
+\geometry{left=2.0cm, top=1.0cm, right=2.0cm, bottom=1.0cm, footskip=-2cm}
 
 %% Header & Footer
 % Set offset to each header and footer
-\fancyhfoffset{0em}
+% \fancyhfoffset{0em}
 % Remove head rule
-\renewcommand{\headrulewidth}{0pt}
+% \renewcommand{\headrulewidth}{0pt}
 % Clear all header & footer fields
-\fancyhf{}
+% \fancyhf{}
 % Enable if you want to make header or footer using fancyhdr
 \pagestyle{fancy}
+\fancyfoot{}
 
 
 %-------------------------------------------------------------------------------
@@ -181,11 +184,11 @@
 \newcommand*{\footerstyle}[1]{{\fontsize{8pt}{1em}\footerfont\scshape\color{lighttext} #1}}
 \newcommand*{\sectionstyle}[1]{{\fontsize{16pt}{1em}\bodyfont\bfseries\color{text}\@sectioncolor #1}}
 \newcommand*{\subsectionstyle}[1]{{\fontsize{12pt}{1em}\bodyfont\scshape\textcolor{text}{#1}}}
-\newcommand*{\paragraphstyle}{\fontsize{9pt}{1em}\bodyfontlight\upshape\color{text}}
+\newcommand*{\paragraphstyle}{\fontsize{11pt}{1em}\bodyfontlight\upshape\color{text}}
 
 % For elements of entry
-\newcommand*{\entrytitlestyle}[1]{{\fontsize{10pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
-\newcommand*{\entrypositionstyle}[1]{{\fontsize{8pt}{1em}\bodyfont\scshape\color{graytext} #1}}
+\newcommand*{\entrytitlestyle}[1]{{\fontsize{11pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
+\newcommand*{\entrypositionstyle}[1]{{\fontsize{9pt}{1em}\bodyfont\scshape\color{graytext} #1}}
 \newcommand*{\entrydatestyle}[1]{{\fontsize{8pt}{1em}\bodyfontlight\slshape\color{graytext} #1}}
 \newcommand*{\entrylocationstyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\slshape\color{awesome} #1}}
 \newcommand*{\descriptionstyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\upshape\color{text} #1}}
@@ -403,8 +406,8 @@
 \newcommand{\acvHeaderAfterQuoteSkip}{5mm}
 
 % Others
-\newcommand{\acvSectionTopSkip}{3mm}
-\newcommand{\acvSectionContentTopSkip}{2.5mm}
+\newcommand{\acvSectionTopSkip}{1mm}
+\newcommand{\acvSectionContentTopSkip}{0.5mm}
 
 
 %-------------------------------------------------------------------------------
@@ -684,7 +687,7 @@
   \begin{center}
     \setlength\tabcolsep{0pt}
     \setlength{\extrarowheight}{0pt}
-    \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} C{1.5cm} L{\textwidth - 4.0cm} R{2.5cm}}
+    \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} C{1cm} L{\textwidth - 6.5cm} R{3.5cm}}
 }{%
     \end{tabular*}
   \end{center}
@@ -778,3 +781,148 @@
       \letterenclosurestyle{\@letterenclname: \@letterenclosure} \\
     }
 }
+
+%-------------------------------------------------------------------------------
+%                Bibliography
+%-------------------------------------------------------------------------------
+%\RequirePackage[style=verbose, maxnames=99, sorting=ydnt]{biblatex}
+% \RequirePackage[ % BibLaTeX
+% 	sorting=ydnt, % Sorts entries by year (descending order), name, title
+% 	style=verbose,
+% 	doi=false,
+% 	isbn=true,
+% 	url=false,
+% 	eprint=false,
+% 	backref = false, % include back references in bibliography
+% 	maxcitenames=3, % affects only the citations in the document body
+% 	maxbibnames=2, % affects only the bibliography, pass 99 to print all
+% 	hyperref=true,
+% 	block=none,
+% 	backend=biber % {Options: bibtex, biber}
+% 	]{biblatex}
+
+% % Avoid splitting entries across page break (only for 3 or fewer lines)
+% % Tip: http://tex.stackexchange.com/a/51261
+% \AtBeginEnvironment{thebibliography}{%
+%    \clubpenalty10000
+%    \@clubpenalty \clubpenalty
+%    \widowpenalty10000
+%    \interlinepenalty5000}
+
+% % Customized format, based on Fancy CV template created by Adrien Friggeri
+% \DeclareFieldFormat[article]{title}{#1\par}
+% \DeclareFieldFormat[inproceedings]{title}{#1\par}
+% \DeclareFieldFormat[misc]{title}{#1\par}
+% \DeclareFieldFormat[report]{title}{#1\par}
+% \DeclareFieldFormat[incollection]{title}{#1\par}
+
+% \DeclareBibliographyDriver{article}{%
+%   \entrytitlestyle{\printfield{title}}%
+% %   \newblock%
+%   \descriptionstyle{\printnames{author}}%
+% %   \par%
+% %   \newblock%
+%   \descriptionstyle{%
+%     \usebibmacro{journal+issuetitle}%
+%     \setunit{\space}%
+%     \printfield{pages}%
+%     \newunit%
+%     \printlist{publisher}%
+%     \setunit*{\addcomma\space}%
+%     % \printfield{year}%
+%     \newunit%
+%     \printfield{note}%
+%     \newunit%
+%   }
+%   \par\vspace{0.3\baselineskip}
+% }
+
+% \DeclareBibliographyDriver{inproceedings}{%
+%   \entrytitlestyle{\printfield{title}}%
+%   \newblock%
+%   \descriptionstyle{\printnames{author}}%
+% %   \par%
+%   \newblock%
+%   \descriptionstyle{%
+%     \printfield{booktitle}%
+%     \setunit{\addcomma\space}%
+%     \printfield{year}%
+%     \setunit{\addcomma\space}%
+%     \printlist{location}%
+%     \newunit%
+%     \printfield{note}%
+%     \newunit%
+%   }
+%   \par\vspace{0.3\baselineskip}
+% }
+
+% \DeclareBibliographyDriver{incollection}{%
+%   \entrytitlestyle{\printfield{title}}%
+%   \newblock%
+%   \entrypositionstyle{\printnames{author}}%
+%   \par%
+%   \newblock%
+%   \descriptionstyle{%
+%     \fontsize{8pt}{1em}\bodyfontlight\color{graytext}%
+%     \printfield{booktitle}%
+%     \setunit{\addcomma\space}%
+%     \printfield{year}%
+%     \setunit{\addcomma\space}%
+%     \printlist{location}%
+%     \newunit%
+%   }
+%   \par\vspace{0.3\baselineskip}
+% }
+
+% \DeclareBibliographyDriver{misc}{%
+%   \entrytitlestyle{\printfield{title}}%
+%   \newblock%
+%   \entrypositionstyle{\printnames{author}}%
+%   \par%
+%   \newblock%
+%   \descriptionstyle{%
+%     \fontsize{8pt}{1em}\bodyfontlight\color{graytext}%
+%     \printfield{booktitle}%
+%     \setunit*{\addcomma\space}%
+%     \printfield{note}%
+%     \setunit*{\addcomma\space}%
+%     \printfield{year}%
+%     \setunit{\addcomma\space}%
+%     \printlist{location}%
+%     \newunit%
+%   }
+%   \par\vspace{0.3\baselineskip}
+% }
+
+% \DeclareBibliographyDriver{report}{%
+%   \entrytitlestyle{\printfield{title}}%
+%   \newblock%
+%   \entrypositionstyle{\printnames{author}}%
+%   \par%
+%   \newblock%
+%   \descriptionstyle{%
+%     \fontsize{8pt}{1em}\bodyfontlight\color{graytext}%
+%     \printfield{type}%
+%     \setunit{\space}%
+%     \printfield{number}%
+%     \setunit{\addcomma\space}%
+%     \printfield{year}%
+%     \newunit%
+%   }
+%   \par\vspace{0.3\baselineskip}
+% }
+
+% % New syntax for flexible backend (BibLaTeX > v3.3)
+% \DeclareNameFormat{author}{%
+%   \fontsize{9pt}{1em}\bodyfont%
+%   \renewcommand*{\multinamedelim}{\addcomma\addspace}%
+%   \nameparts{#1}%
+%   \ifthenelse{\value{listcount}=1}
+%     {\ifblank{\namepartgiveni}{}{\namepartgiveni\space}%
+%     \namepartfamily}%
+%     {\ifblank{\namepartgiveni}{}{\namepartgiveni\space}%
+%     \namepartfamily}%
+%   \ifthenelse{\value{listcount}<\value{liststop}}
+%   {\addcomma\space}
+%   {}
+% }
